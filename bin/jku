@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+
+var stdin = process.stdin;
+stdin.resume();
+stdin.setEncoding('utf8');
+
+var Jku = require('../lib/jku');
+
+var jku = new Jku({
+  conditions: '.foo',
+  result: '{ bar: .bar, foo: .foo.toUpperCase() }'
+});
+
+jku.run(stdin);

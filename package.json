@@ -1,0 +1,17 @@
+{
+    "name" : "jku",
+    "version" : "0.0.1",
+    "description" : "JSON pipes",
+    "main" : "./index.js",
+    "dependencies" : {
+        "optimist" : "0.3.5"
+    },
+    "author" : {
+        "name" : "Björn Ramberg",
+        "email" : "bjorne@gah.se"
+    },
+    "license" : "MIT/X11",
+    "engine" : {
+        "node" : ">=0.4"
+    }
+}
