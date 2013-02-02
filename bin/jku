@@ -1,5 +1,22 @@
 #!/usr/bin/env node
 
+var optimist = require('optimist');
+var argv = optimist
+      .usage('Filter and modify a JSON stream\nUsage: jku [-f <filter>] [-t <transform>]')
+      .alias('f', 'filter')
+      .string('f')
+      .describe('f', 'An expression to filter by')
+      .alias('t', 'transform')
+      .string('t')
+      .describe('t', 'Transform expression')
+      .argv;
+
+if (!argv.f && !argv.t) {
+  optimist.showHelp();
+  console.error('Please supply a filter and/or a transform.');
+  process.exit(0);
+}
+
 var stdin = process.stdin;
 stdin.resume();
 stdin.setEncoding('utf8');
@@ -7,8 +24,8 @@ stdin.setEncoding('utf8');
 var Jku = require('../lib/jku');
 
 var jku = new Jku({
-  conditions: '.foo',
-  result: '{ bar: .bar, foo: .foo.toUpperCase() }'
+  filter: argv.filter,
+  transform: argv.transform
 });
 
 jku.run(stdin);
