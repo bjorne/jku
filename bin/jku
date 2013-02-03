@@ -9,6 +9,9 @@ var argv = optimist
       .alias('t', 'transform')
       .string('t')
       .describe('t', 'Transform expression')
+      .alias('p', 'pretty')
+      .boolean('p')
+      .describe('p', 'Pretty-print resulting JSON')
       .argv;
 
 if (!argv.f && !argv.t) {
@@ -25,7 +28,8 @@ var Jku = require('../lib/jku');
 
 var jku = new Jku({
   filter: argv.filter,
-  transform: argv.transform
+  transform: argv.transform,
+  pretty: argv.pretty
 });
 
 jku.run(stdin);
