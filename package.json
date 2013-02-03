@@ -1,17 +1,24 @@
 {
-    "name" : "jku",
-    "version" : "0.0.1",
-    "description" : "JSON pipes",
-    "main" : "./index.js",
-    "dependencies" : {
-        "optimist" : "0.3.5"
-    },
-    "author" : {
-        "name" : "Björn Ramberg",
-        "email" : "bjorne@gah.se"
-    },
-    "license" : "MIT/X11",
-    "engine" : {
-        "node" : ">=0.4"
-    }
+  "name": "jku",
+  "version": "0.0.1",
+  "description": "Command-line JSON stream filter and transformer",
+  "bin": "./bin/jku",
+  "main": "./lib/jku.js",
+  "dependencies": {
+    "optimist": "0.3.5"
+  },
+  "author": "Björn Ramberg <bjorne@gah.se>",
+  "license": "MIT/X11",
+  "engine": {
+    "node": ">=0.4"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": "*"
+  },
+  "homepage": "https://github.com/bjorne/jku",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bjorne/jku.git"
+  }
 }
