@@ -26,7 +26,7 @@ is heavily inspired by [jq](http://stedolan.github.com/jq/).
     { "foo": 2, "bar": "b" }
     { "foo": 3 }
 
-    $ cat foo.json | jku -f 'json.bar' -t 'json.foo'
+    $ cat foo.json | jku -f '_.bar' -t '_.foo'
     1
     2
 
@@ -50,29 +50,29 @@ jku will output to different formats:
 **Scalar** values, e.g. String, Number, will return the string
   representation of the value.
 
-    $ echo '{ "foo" : 1 }' | jku -t 'json.foo'
+    $ echo '{ "foo" : 1 }' | jku -t '_.foo'
     1
-    $ echo '{ "foo" : "bar" }' | jku -t 'json.foo'
+    $ echo '{ "foo" : "bar" }' | jku -t '_.foo'
     bar
 
 
 **Array** value will join the elements of the array with a tab. The
   separator can be configured by supplying the `-s` option.
 
-    $ echo '{ "foo" : [1,2,3] }' | jku -t 'json.foo'
+    $ echo '{ "foo" : [1,2,3] }' | jku -t '_.foo'
     1    2    3
     
 **Object** value will output the JSON representation of the object.
   Pretty-printing can be enabled by supplying the `-p` option.
 
-    $ echo '{ "foo" : "bar" }' | jku -t '{ baz: json.foo }'
+    $ echo '{ "foo" : "bar" }' | jku -t '{ baz: _.foo }'
     {"baz":"bar"}
 
 ## More examples
 
 ### Filter by number of keys
 
-    $ echo '{ "foo": 1, "bar": 2, "baz": 3 }' | jku -p -f 'Object.keys(json).length > 2'
+    $ echo '{ "foo": 1, "bar": 2, "baz": 3 }' | jku -p -f 'Object.keys(_).length > 2'
     {
       "foo": 1,
       "bar": 2,
@@ -86,7 +86,7 @@ jku will output to different formats:
     { "foo": 2, "bar": "b" }
     { "foo": 3 }
 
-    $ cat foo.json | jku -s ',' -t '[json.foo, json.bar]'
+    $ cat foo.json | jku -s ',' -t '[_.foo, _.bar]'
     1,a
     2,b
     3,
