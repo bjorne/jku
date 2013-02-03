@@ -2,7 +2,7 @@
 
 var optimist = require('optimist');
 var argv = optimist
-      .usage('Filter and modify a JSON stream\nUsage: jku [-f <filter>] [-t <transform>]')
+      .usage('Filter and modify a JSON stream\nUsage: jku [-p] [-s <SEP>] [-f <FILTER>] [-t <TRANSFORM>]')
       .alias('f', 'filter')
       .string('f')
       .describe('f', 'An expression to filter by')
@@ -11,7 +11,12 @@ var argv = optimist
       .describe('t', 'Transform expression')
       .alias('p', 'pretty')
       .boolean('p')
+      .default('p', false)
       .describe('p', 'Pretty-print resulting JSON')
+      .alias('s', 'separator')
+      .default('s', '	')
+      .string('s')
+      .describe('s', 'The separator with which to join arrays')
       .argv;
 
 if (!argv.f && !argv.t) {
@@ -29,7 +34,8 @@ var Jku = require('../lib/jku');
 var jku = new Jku({
   filter: argv.filter,
   transform: argv.transform,
-  pretty: argv.pretty
+  pretty: argv.pretty,
+  separator: argv.separator
 });
 
 jku.run(stdin);
