@@ -91,3 +91,14 @@ jku will output to different formats:
     1,a
     2,b
     3,
+
+## Contribute
+
+Some things I would really like to see:
+
+* Multi-line JSON support. I guess a streaming JSON parser would be useful.
+* CoffeeScript syntax support
+
+In any case, make sure to run the test examples with `make test`. All
+examples in this README are runnable, so simply add an example to
+include it in the test suite.
