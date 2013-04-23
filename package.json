@@ -12,7 +12,10 @@
   "engine": {
     "node": ">=0.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "diff": "~1.0.4",
+    "async": "~0.2.7"
+  },
   "engines": {
     "node": "*"
   },
@@ -20,5 +23,11 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/bjorne/jku.git"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "make test"
   }
 }
