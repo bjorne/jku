@@ -6,13 +6,13 @@ is heavily inspired by [jq](http://stedolan.github.com/jq/).
     $ jku
     Filter and modify a JSON stream
     Usage: jku [-p] [-s <SEP>] [-f <FILTER>] [-t <TRANSFORM>]
-     
+    
     Options:
       -f, --filter     An expression to filter by               [string]
       -t, --transform  Transform expression                     [string]
       -p, --pretty     Pretty-print resulting JSON              [boolean]  [default: false]
       -s, --separator  The separator with which to join arrays  [string]  [default: "\t"]
-     
+    
     Please supply a filter and/or a transform.
 
 ## Installation
@@ -52,6 +52,7 @@ jku will output to different formats:
 
     $ echo '{ "foo" : 1 }' | jku -t '_.foo'
     1
+
     $ echo '{ "foo" : "bar" }' | jku -t '_.foo'
     bar
 
@@ -60,8 +61,8 @@ jku will output to different formats:
   separator can be configured by supplying the `-s` option.
 
     $ echo '{ "foo" : [1,2,3] }' | jku -t '_.foo'
-    1    2    3
-    
+    1	2	3
+
 **Object** value will output the JSON representation of the object.
   Pretty-printing can be enabled by supplying the `-p` option.
 
