@@ -35,7 +35,7 @@ the value of the `foo` key.
 
 ## Filtering and Transforming Expressions
 
-Expressions are evaluated as javascript code, with `_` representing the current JSON object.
+Expressions are evaluated as Javascript code, with `_` representing the current JSON object.
 
 ### Filtering
 
