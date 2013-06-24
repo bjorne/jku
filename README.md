@@ -92,6 +92,24 @@ jku will output to different formats:
     2,b
     3,
 
+### Convert timestamps to human readable
+
+The following outputs new JSON documents with the timestamp replaced
+by a human readable string and the count represented in hexadecimal
+form. This is an example of how arbitrary Javascript functions can be
+used in expressions.
+
+    $ cat foo.json
+    { "timestamp": 1372068657151, "count": 17 }
+    { "timestamp": 1372068659841, "count": 136 }
+    { "timestamp": 1372068668142, "count": 255 }
+
+    $ cat foo.json | jku -t '_.timestamp = new Date(_.timestamp), _.count = _.count.toString(16), _'
+    {"timestamp":"2013-06-24T10:10:57.151Z","count":"11"}
+    {"timestamp":"2013-06-24T10:10:59.841Z","count":"88"}
+    {"timestamp":"2013-06-24T10:11:08.142Z","count":"ff"}
+
+
 ## Contribute
 
 Some things I would really like to see:
