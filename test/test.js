@@ -1,4 +1,5 @@
 var readmePath = __dirname + '/../README.md';
+var moreExamplesPath = __dirname + '/more_examples.md';
 var sandboxPath = './test/sandbox';
 var codeExampleRe = /    \$ (.|\n)+?\n\n/mg;
 var bannedCommandRe = /npm install/;
@@ -111,6 +112,8 @@ var run = function(example, done) {
 
 var readme = fs.readFileSync(readmePath, 'utf8');
 var examples = readme.match(codeExampleRe);
+var moreExamplesFile = fs.readFileSync(moreExamplesPath, 'utf8');
+examples = examples.concat(moreExamplesFile.match(codeExampleRe));
 process.chdir(sandboxPath);
 async.mapSeries(examples, run, function(err, res) {
   var failed = res.reduce(function(count, ex) { return (ex == 'fail' ? ++count : count); }, 0);

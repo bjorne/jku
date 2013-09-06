@@ -38,4 +38,4 @@ var jku = new Jku({
   separator: argv.separator
 });
 
-jku.run(stdin);
+jku.run(stdin, process.stdout);
