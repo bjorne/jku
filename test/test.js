@@ -119,4 +119,5 @@ async.mapSeries(examples, run, function(err, res) {
   var failed = res.reduce(function(count, ex) { return (ex == 'fail' ? ++count : count); }, 0);
   var passed = res.reduce(function(count, ex) { return (ex == 'pass' ? ++count : count); }, 0);
   console.log(failed + ' failed examples, ' + passed + ' passed examples, ' + (passed+failed) + ' examples in total.');
+  process.exit(+!!failed);
 });
