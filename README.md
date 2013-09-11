@@ -1,5 +1,7 @@
 # Jku
 
+[![Build Status](https://travis-ci.org/bjorne/jku.png)](https://travis-ci.org/bjorne/jku)
+
 Jku is a command-line tool to filter and/or modify a JSON stream. It
 is heavily inspired by [jq](http://stedolan.github.com/jq/).
 
