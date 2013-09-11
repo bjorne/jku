@@ -1,5 +1,5 @@
 test:
-	@rm -r ./test/sandbox
+	@rm -rf ./test/sandbox
 	@mkdir ./test/sandbox
 	@node test/test.js
 
