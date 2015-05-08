@@ -13,6 +13,10 @@ var argv = optimist
       .boolean('p')
       .default('p', false)
       .describe('p', 'Pretty-print resulting JSON')
+      .alias('r', 'require')
+      .string('r')
+      .default('r', [])
+      .describe('r', 'Require file')
       .alias('s', 'separator')
       .default('s', '	')
       .string('s')
@@ -23,6 +27,17 @@ if (!argv.f && !argv.t) {
   optimist.showHelp();
   console.error('Please supply a filter and/or a transform.');
   process.exit(0);
+}
+
+if (Object.prototype.toString.call(argv.require) !== '[object Array]') {
+  argv.require = [argv.require];
+}
+
+if (argv.require) {
+  var path = require('path');
+  for(var i = 0; i < argv.require.length; i++) {
+    require(path.resolve(argv.require[i]));
+  }
 }
 
 var stdin = process.stdin;
