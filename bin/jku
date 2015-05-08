@@ -29,6 +29,10 @@ if (!argv.f && !argv.t) {
   process.exit(0);
 }
 
+try {
+  require(process.env['HOME'] + '/' + '.jku.js');
+} catch(e) {}
+
 if (Object.prototype.toString.call(argv.require) !== '[object Array]') {
   argv.require = [argv.require];
 }
